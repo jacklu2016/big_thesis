@@ -35,9 +35,21 @@ retailer_stock1 = [retailer_initial_stock]
 # 模拟库存变化
 for t in range(1, time_steps):
     # 零售商库存变化：需求消耗库存
-    retailer_stock.append(retailer_stock[-1] - 20)  # 假设每周期需求量为20件
-    retailer_stock1.append(retailer_stock1[-1] - 15)  # 假设每周期需求量为20件
-    supplier_stock.append(supplier_stock[-1])  # 供应商库存增加
+    if t == 17:
+        retailer_stock.append(retailer_stock[-1] + 40)  # 调拨进入40
+        retailer_stock1.append(retailer_stock1[-1] - 40)  # 调拨出去40
+        supplier_stock.append(supplier_stock[-1])  # 供应商库存和前一时间节点一致
+        continue
+    elif t == 18:
+        retailer_stock.append(retailer_stock[-1] - 120)  # 调拨后 销售120
+        retailer_stock1.append(retailer_stock1[-1] - 15)  # 正常销售15
+        supplier_stock.append(supplier_stock[-1])  # 供应商库存和前一时间节点一致
+        continue
+    else:
+        retailer_stock.append(retailer_stock[-1] - 20)  # 假设每周期需求量为20件
+        retailer_stock1.append(retailer_stock1[-1] - 15)  # 假设每周期需求量为15件
+        supplier_stock.append(supplier_stock[-1])  # 供应商库存增加
+
     # 零售商库存低于安全库存时，进行补货
     if retailer_stock[-1] <= safety_stock_retailer:
         # 供应商的库存减少零售商补货量
@@ -68,9 +80,13 @@ if len(supplier_stock) != len(retailer_stock):
     while len(retailer_stock) < max_len:
         retailer_stock.append(retailer_stock[-1])
 
-np.set_printoptions(precision=2)
-print(retailer_stock)
-print(retailer_stock1)
+retailer_stock_np = np.array(retailer_stock)
+retailer_stock1_np = np.array(retailer_stock1)
+retailer_stock_np_round = np.round(retailer_stock_np, 2)  # 保留两位小数
+retailer_stock1_np_round = np.round(retailer_stock1_np, 2)  # 保留两位小数
+
+print(retailer_stock_np_round)
+print(retailer_stock1_np_round)
 # 绘制图表
 fig, ax = plt.subplots(3, 1, figsize=(8, 5), sharex=True, sharey=True)
 
@@ -80,7 +96,7 @@ ax[0].set_title('供应商库存变化图 (EOQ补货)')
 #ax[0].set_xlabel('时间周期')
 ax[0].set_ylabel('供应商库存')
 ax[0].set_ylim(top=550)
-ax[0].set_ylim(bottom=200)  # 设置第一个图的Y轴最小值为200
+ax[0].set_ylim(bottom=0)  # 设置第一个图的Y轴最小值为200
 ax[0].grid(False)
 ax[0].legend(loc='lower right')  # 将图例放到右边
 
@@ -90,7 +106,7 @@ ax[1].plot(np.arange(time_steps), retailer_stock, label='零售商库存', color
 #ax[1].set_xlabel('时间周期')
 ax[1].set_ylabel('零售商库存')
 
-ax[1].set_ylim(bottom=100)
+ax[1].set_ylim(bottom=0)
 ax[1].grid(False)
 ax[1].legend()
 
@@ -100,7 +116,7 @@ ax[2].plot(np.arange(time_steps), retailer_stock1, label='零售商库存', colo
 ax[2].set_xlabel('时间')
 ax[2].set_ylabel('零售商库存')
 
-ax[2].set_ylim(bottom=100)
+ax[2].set_ylim(bottom=0)
 ax[2].grid(False)
 ax[2].legend()
 
