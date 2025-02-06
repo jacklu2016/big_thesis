@@ -87,7 +87,7 @@ ax[0].legend(loc='lower right')  # 将图例放到右边
 ax[1].plot(np.arange(time_steps), retailer_stock, label='药店库存', color='green')
 #ax[1].set_title('药店库存变化图 (EOQ补货)')
 #ax[1].set_xlabel('时间周期')
-ax[1].set_ylabel('药店库存')
+ax[1].set_ylabel('药店i库存')
 
 ax[1].set_ylim(bottom=100)
 ax[1].grid(False)
@@ -97,7 +97,7 @@ ax[1].legend()
 ax[2].plot(np.arange(time_steps), retailer_stock1, label='药店库存', color='green')
 #ax[2].set_title('药店库存变化图 (EOQ补货)')
 ax[2].set_xlabel('时间')
-ax[2].set_ylabel('药店库存')
+ax[2].set_ylabel('药店j库存')
 
 ax[2].set_ylim(bottom=100)
 ax[2].grid(False)
