@@ -11,5 +11,6 @@ sigma1 = 20
 q = norm.ppf(p1, loc=mu1, scale=sigma1)
 print(f"对于概率 {p1}，对应的分位数 q 为 {q}")
 
-def p_to_order_quantity(p,mu,sigma):
+def p_to_order_quantity_norm(p,mu,sigma):
     return norm.ppf(p, loc=mu, scale=sigma)
+

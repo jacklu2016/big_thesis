@@ -4,16 +4,19 @@ import order_quantity_minus_i_to_i
 import order_quantity_i_to_minus_i
 import config
 import p_to_order_quantity
+import numpy as np
 #调拨价格
-t_arr = [12,13,14,15,16,17]
+t_arr = np.array([12,13,14,15,16,17]) + 5
 
 def t_to_q_i(t):
     #(p_i-t)后面的积分
-    q_i_t_calculus,err = order_quantity_minus_i_to_i.minus_i_to_i_dblquad()
-    t_w_s_calculus,err1 = order_quantity_i_to_minus_i.i_to_minus_i_dblquad()
+    #q_i_t_calculus,err = order_quantity_minus_i_to_i.minus_i_to_i_dblquad()
+    #t_w_s_calculus,err1 = order_quantity_i_to_minus_i.i_to_minus_i_dblquad()
+    q_i_t_calculus = 3.14
+    t_w_s_calculus = 2.1
     F_q_i = ((config.p_i - config.w)+(config.p_i-t)*q_i_t_calculus - (t - config.w - config.s)*t_w_s_calculus)/config.p_i
     print(f"F_q_i:{F_q_i}")
-    q_i = p_to_order_quantity.p_to_order_quantity(F_q_i,config.mu,config.sigma)
+    q_i = p_to_order_quantity.p_to_order_quantity_norm(F_q_i,config.mu,config.sigma)
     print(f"q_i:{q_i}")
     return q_i
 
