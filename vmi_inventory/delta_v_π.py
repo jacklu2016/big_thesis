@@ -122,7 +122,7 @@ plt.plot(delta_range, profits_D_greater_than_q,color='blue',  label="库存共�
 plt.plot(delta_range, profits_D_greater_than_q1,color='yellow',  label="库存共享成本=0.2",marker='D', markersize=8,)
 plt.plot(delta_range, profits_D_greater_than_q2,color='green',  label="库存共享成本=0.3",marker='>', markersize=8,)
 plt.xlabel("竞争强度δ",fontsize=14)
-plt.ylabel("供应商利润",fontsize=14)
+plt.ylabel("医药批发企业利润",fontsize=14)
 #plt.title("当需求量大于订购量时的药店利润")
 plt.legend(fontsize=14)
 plt.grid(True)
