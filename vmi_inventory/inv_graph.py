@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib
 matplotlib.use('TkAgg')  # 切换到TkAgg后端
-import matplotlib.pyplot as plt
+
 from matplotlib import rcParams
 
 # 设置中文字体

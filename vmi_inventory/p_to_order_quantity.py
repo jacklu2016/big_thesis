@@ -1,7 +1,7 @@
 from scipy.stats import norm
 
 # 给定概率 p
-p1 = 1
+p1 = 0.9
 
 # 均值 mu 和标准差 sigma
 mu1 = 200

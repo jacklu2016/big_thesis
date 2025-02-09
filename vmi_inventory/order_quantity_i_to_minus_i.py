@@ -1,4 +1,3 @@
-import numpy as np
 import scipy.stats as stats
 from scipy.integrate import dblquad
 import config
