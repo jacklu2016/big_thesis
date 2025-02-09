@@ -105,6 +105,11 @@ def profit(delta, q_i, q_neg_i):
 # 计算不同调拨价格下的利润
 profits_D_greater_than_q = [profit(delta, q_i, q_neg_i) for delta in delta_range]
 
+s = config.s + 0.1  # 库存共享成本
+profits_D_greater_than_q1 = [profit(delta, q_i, q_neg_i) for delta in delta_range]
+
+s = config.s + 0.2  # 库存共享成本
+profits_D_greater_than_q2 = [profit(delta, q_i, q_neg_i) for delta in delta_range]
 #mean_d = 180
 #profits_D_less_than_q = [profit(delta, q_i, q_neg_i) for delta in delta_range]
 
@@ -113,7 +118,9 @@ plt.figure(figsize=(8, 6))
 
 # D > q的利润曲线
 plt.subplot(1, 1, 1)
-plt.plot(delta_range, profits_D_greater_than_q, label="供应商利润",marker='D', markersize=8,)
+plt.plot(delta_range, profits_D_greater_than_q,color='blue',  label="库存共享成本=0.1",marker='v', markersize=8,)
+plt.plot(delta_range, profits_D_greater_than_q1,color='yellow',  label="库存共享成本=0.2",marker='D', markersize=8,)
+plt.plot(delta_range, profits_D_greater_than_q2,color='green',  label="库存共享成本=0.3",marker='>', markersize=8,)
 plt.xlabel("竞争强度δ",fontsize=14)
 plt.ylabel("供应商利润",fontsize=14)
 #plt.title("当需求量大于订购量时的药店利润")
