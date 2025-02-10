@@ -91,30 +91,30 @@ print(retailer_stock1_np_round)
 fig, ax = plt.subplots(3, 1, figsize=(8, 5), sharex=True, sharey=True)
 
 # 供应商库存变化图
-ax[0].plot(np.arange(time_steps), supplier_stock, label='供应商库存', color='blue')
-ax[0].set_title('供应商库存变化图 (EOQ补货)')
+ax[0].plot(np.arange(time_steps), supplier_stock, label='医药批发企业库存', color='blue')
+ax[0].set_title('医药批发企业库存变化图 (EOQ补货)')
 #ax[0].set_xlabel('时间周期')
-ax[0].set_ylabel('供应商库存')
+ax[0].set_ylabel('医药批发企业库存')
 ax[0].set_ylim(top=550)
 ax[0].set_ylim(bottom=0)  # 设置第一个图的Y轴最小值为200
 ax[0].grid(False)
 ax[0].legend(loc='lower right')  # 将图例放到右边
 
 # 零售商库存变化图
-ax[1].plot(np.arange(time_steps), retailer_stock, label='零售商库存', color='green')
+ax[1].plot(np.arange(time_steps), retailer_stock, label='药店1库存', color='green')
 #ax[1].set_title('零售商库存变化图 (EOQ补货)')
 #ax[1].set_xlabel('时间周期')
-ax[1].set_ylabel('零售商库存')
+ax[1].set_ylabel('药店1库存')
 
 ax[1].set_ylim(bottom=0)
 ax[1].grid(False)
 ax[1].legend()
 
 # 零售商1库存变化图
-ax[2].plot(np.arange(time_steps), retailer_stock1, label='零售商库存', color='green')
+ax[2].plot(np.arange(time_steps), retailer_stock1, label='药店2库存', color='green')
 #ax[2].set_title('零售商库存变化图 (EOQ补货)')
 ax[2].set_xlabel('时间')
-ax[2].set_ylabel('零售商库存')
+ax[2].set_ylabel('药店2库存')
 
 ax[2].set_ylim(bottom=0)
 ax[2].grid(False)
