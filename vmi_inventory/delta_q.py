@@ -73,10 +73,19 @@ def calc_order_quantity(delta_arr):
 
 # 计算对应的订单量 q
 order_quantities = calc_order_quantity(delta_range)
+
+t = 17
+order_quantities1 = calc_order_quantity(delta_range)
+
+t = 19
+order_quantities2 = calc_order_quantity(delta_range)
+
 print(order_quantities)
 # 绘制图表
 plt.figure(figsize=(8, 6))
-plt.plot(delta_range, order_quantities, label='订购量q',marker='D', markersize=8,)
+plt.plot(delta_range, order_quantities, label='调拨价格=15',color='blue',marker='v', markersize=8,)
+plt.plot(delta_range, order_quantities1, label='调拨价格=17',color='yellow',marker='D', markersize=8,)
+plt.plot(delta_range, order_quantities2, label='调拨价格=19',color='green',marker='>', markersize=8,)
 #plt.title("Relationship between Allocation Price (t) and Order Quantity (q)")
 plt.xlabel("竞争强度δ",fontsize=14)
 plt.ylabel("最优订购量q",fontsize=14)
