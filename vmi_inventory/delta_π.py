@@ -110,18 +110,27 @@ profits_D_greater_than_q1 = [profit(delta, q_i, q_neg_i) for delta in delta_rang
 t = 19
 profits_D_greater_than_q2 = [profit(delta, q_i, q_neg_i) for delta in delta_range]
 
+mean_d = 180
+t = 15
+profits_D_less_than_q = [profit(delta, q_i, q_neg_i) for delta in delta_range]
+t = 17
+profits_D_less_than_q1 = [profit(delta, q_i, q_neg_i) for delta in delta_range]
+t = 19
+profits_D_less_than_q2 = [profit(delta, q_i, q_neg_i) for delta in delta_range]
+
 #mean_d = 180
-#profits_D_less_than_q = [profit(delta, q_i, q_neg_i) for delta in delta_range]
+# t = 15
+# profits_D_less_than_q = [profit(delta, q_i, q_neg_i) for delta in delta_range]
 
 # 绘制图形
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(12, 6))
 
 # D > q的利润曲线
-plt.subplot(1, 1, 1)
+plt.subplot(1, 2, 1)
 #plt.plot(delta_range, profits_D_greater_than_q, label="药店利润",marker='D', markersize=8,)
-plt.plot(delta_range, profits_D_greater_than_q, label='调拨价格=15',color='blue',marker='v', markersize=8,)
-plt.plot(delta_range, profits_D_greater_than_q1, label='调拨价格=17',color='yellow',marker='D', markersize=8,)
-plt.plot(delta_range, profits_D_greater_than_q2, label='调拨价格=19',color='green',marker='>', markersize=8,)
+plt.plot(delta_range, profits_D_greater_than_q, label='D=220,q=200,调拨价格=15',color='blue',marker='v', markersize=8,)
+plt.plot(delta_range, profits_D_greater_than_q1, label='D=220,q=200,调拨价格=17',color='yellow',marker='D', markersize=8,)
+plt.plot(delta_range, profits_D_greater_than_q2, label='D=220,q=200,调拨价格=19',color='green',marker='>', markersize=8,)
 
 plt.xlabel("竞争强度δ",fontsize=14)
 plt.ylabel("药店利润",fontsize=14)
@@ -130,13 +139,17 @@ plt.legend(fontsize=14)
 plt.grid(True)
 
 # D < q的利润曲线
-#plt.subplot(1, 1, 1)
-# plt.plot(delta_range, profits_D_less_than_q, label="D=180,q=200(需求量小于订购量)", color="orange",marker='^', markersize=8,)
-# plt.xlabel("竞争强度δ",fontsize=14)
-# plt.ylabel("药店利润",fontsize=14)
-# #plt.title("当需求量小于订购量时的药店利润")
-# plt.legend(fontsize=14)
-# plt.grid(True)
+plt.subplot(1, 2, 2)
+plt.plot(delta_range, profits_D_less_than_q, label='D=180,q=200,调拨价格=15',color='blue',marker='v', markersize=8,)
+plt.plot(delta_range, profits_D_less_than_q1, label='D=180,q=200,调拨价格=17',color='yellow',marker='D', markersize=8,)
+plt.plot(delta_range, profits_D_less_than_q2, label='D=180,q=200,调拨价格=19',color='green',marker='>', markersize=8,)
+
+#plt.plot(delta_range, profits_D_less_than_q, label="D=180,q=200(需求量小于订购量)", color="orange",marker='^', markersize=8,)
+plt.xlabel("竞争强度δ",fontsize=14)
+plt.ylabel("药店利润",fontsize=14)
+#plt.title("当需求量小于订购量时的药店利润")
+plt.legend(fontsize=14)
+plt.grid(True)
 #
 plt.tight_layout()
 plt.show()
